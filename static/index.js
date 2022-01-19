@@ -1,0 +1,1 @@
+document.body.append("This comes from JavaScript")
