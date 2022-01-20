@@ -1,9 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 
 app = Flask(__name__)
 
-w = json.load(open("worldl.json"))
+w = json.load(open("static/worldl.json"))
 
 @app.route("/")
 def index():
@@ -11,7 +11,7 @@ def index():
 
 @app.route("/country/<i>")
 def country(i):
-    return render_template("country.html", c = w[int(i)])
+    return render_template("country.html", c = w[int(i)], next = 1+int(i))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel=stylesheet href=/static/country.css>
     </head>
     <body>
         <h1>Country: {{c.name}}</h1>
         <p>The capital of {{c.name}} is {{c.capital}}</p>
         <p>It has a population of {{c.population}}</p>
         <p>It has a GDP of ${{c.gdp}}</p>
+        <img src={{c.flag}} style='width:100px'/>
+        <p><a href=/country/{{next}}>Next Country</a></p>
     </body>
 </html>

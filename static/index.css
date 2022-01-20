@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato','Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+.header{
+    max-width: 1140px;
+    margin: 0 auto;
+    position: absolute;
+    top: 5%;
+    left: 35%;
+}
+.section{
+    position: absolute;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+h1{
+    margin top: 0;
+    margin-bottom: 20px;
+    font-size: 220%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    
+}
+.combo-box{
+    margin-top: 7%;
+    margin-bottom: 0.5%;
+
+}
+.cty-label{
+    font-size: 80%;
+    font-weight: 300;
+   
+    padding-right: 0.5%;
+    margin-left: 0.5%;
+}
+#countryList{
+    display: inline-block;
+    height:70vh;
+    overflow-y: auto;
+    border: 3px solid black;
+    width: 18%;
+    margin-left: 0.5%;
+}
+#countryList div.hide{
+    display:none;
+}
+#content{
+    display: inline-block;
+    vertical-align: top;
+    padding-left:100px;
+    border: 2px solid black;
+    width: 80%;
+    height: 70vh;
+    
+}
+/* .cty-list img{
+    width:200px;
+    border: 1px solid;
+    float: left;
+} */
+.cty-list{
+    padding-top: 10%;
+}
+.tbone{
+    float: left;
+    position: relative;
+    padding-top: 10%;
+}
+.tbtwo{
+    float: left;
+    width: 300px;
+    position: relative;
+    padding-top: 11%;
+    padding-left: 10%;
+}
+.tbtwo img{
+    width: 300px;
+    border: 2px solid black;
+
+}
+
