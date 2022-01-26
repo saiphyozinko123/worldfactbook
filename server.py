@@ -7,6 +7,11 @@ w = json.load(open("static/worldl.json"))
 
 @app.route("/")
 def index():
+    # if request.args['country']:
+    #     target = request.args['country']
+    #     lst = [c for c in w if c['name'] == target]
+    #     if len(lst) > 0:
+    #        return render_template("index",c = lst[0]) 
     return render_template("index.html")
 
 @app.route("/country/<i>")
@@ -15,3 +20,4 @@ def country(i):
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
