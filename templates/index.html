@@ -35,19 +35,37 @@
     <section class="section-one">
         <div class="mid-row">
             <div class="selector-one"> 
-                <label for="country" class="cty-label">Filter with </label>
+                <label for="country" class="seclabel">Filter with </label>
                 <select id="country" class="select-one">
                     <option value="#">ALL</option>
                 </select>
             </div>
             <div class="selector-two"> 
-                <label for="continent" class="cty-label">Filter with </label>
+                <label for="continent" class="seclabel">Filter with </label>
                 <select id="continent" class="select-two">
                 </select>
+            </div>
+            <!------------------- for quiz selection ---------------------->
+            <div class="selector-three">
+                <label for="quiz" class="seclabel">Play with</label>
+                <select id="quizgame" class="select-three">
+                    <option value="population">Population</option>
+                    <option value="gdp">GDP</option>
+                    <option value="area">Area</option>
+                    <option value="flag">Flag</option>
+                    
+                </select>
+                <button id="playbtn">Play</button>
+            </div>
+
+        
+
+        <div id = question >
         </div>
+        <!-- end -->
         <div class="table">
             <div id=countryList></div>
-            <div id=content></div>
+            <div id =content></div>
         </div>
     </section>
 
