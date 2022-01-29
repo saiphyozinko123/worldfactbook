@@ -143,7 +143,7 @@ fetch('static/worldl.json')
 
         document.getElementById('content').innerHTML = ' ';
         let newDiv = document.createElement('div');
-        newDiv.setAttribute('id', 'question');
+        newDiv.setAttribute('id', 'questions');
         newDiv.innerText = "Which country has biggest population?"
         let questPlace = document.getElementById('question');
         questPlace.append(newDiv);
@@ -183,7 +183,7 @@ fetch('static/worldl.json')
         }else if (btnData === 'gdp'){
             document.getElementById('content').innerHTML = ' ';
             let newDiv = document.createElement('div');
-            newDiv.setAttribute('id', 'question');
+            newDiv.setAttribute('id', 'questions');
             newDiv.innerText = "Which country has biggest GDP growth rate?"
             let questPlace = document.getElementById('question');
             questPlace.append(newDiv);
@@ -222,7 +222,7 @@ fetch('static/worldl.json')
         }else if (btnData === 'area'){
             document.getElementById('content').innerHTML = ' ';
             let newDiv = document.createElement('div');
-            newDiv.setAttribute('id', 'question');
+            newDiv.setAttribute('id', 'questions');
             newDiv.innerText = "Which country has biggest Area?"
             let questPlace = document.getElementById('question');
             questPlace.append(newDiv);
@@ -262,7 +262,7 @@ fetch('static/worldl.json')
             document.getElementById('content').innerHTML = ' ';
             let flagName = Math.floor(r.length*Math.random());
             let newDiv = document.createElement('div');
-            newDiv.setAttribute('id', 'question');
+            newDiv.setAttribute('id', 'questions');
             newDiv.innerText = `Choose the Flag of ${r[flagName].name}`
             let questPlace = document.getElementById('question');
             questPlace.append(newDiv);
@@ -274,22 +274,18 @@ fetch('static/worldl.json')
                 distractors.push(r[randomFlag].flag);
             }
             distractors.push(r[flagName].flag);
-        // let realData = [];
-        // let uniqueFlag ;
-        // for(r = 0;r< 4; r++){
-        //     let randomData = Math.floor(Math.random()*(distractors.length));
-        //     realData.push(distractors[randomData])
-        //     uniqueFlag = new Set(realData);
-        //     if (uniqueFlag.length !== 4){
-        //         uniqueFlag.push(Math.floor(Math.random()*(distractors.length)));
-        //     }
-        //     // uniqueFlag.push()
 
-        // }
-        
-            // console.log(uniqueFlag);
+            let uniflag=new Set(distractors);
+            console.log(uniflag)
+            const arr = [...uniflag];
+        // const shuffleArray
+            let shuffled = arr
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value)
+            console.log(shuffled)
 
-            for (let d of distractors){
+            for (let d of shuffled){
                 let imgFlag = document.createElement('img')
                 // newDiv.setAttribute('id', 'question');
                 imgFlag.src = d;
@@ -311,49 +307,60 @@ fetch('static/worldl.json')
         }
 // ------------------------------- End of Quiz Game selection ----------------------------------------------
         
-// --------------- start population -----------------
-    // let popGame = document.getElementById('pop');
-    // popGame.onclick = () =>{
-    //     document.getElementById('content').innerHTML = ' ';
-    //     let newDiv = document.createElement('div');
-    //     newDiv.innerText = "Which country has biggest population?"
-    //     let questPlace = document.getElementById('question');
-    //     questPlace.append(newDiv);
-    //     document.getElementById('content').append(newDiv);
+// --------------- start of edit data -----------------
+document.getElementById('visible').style.display = 'none';
+let editBtn = document.getElementById('editData');
+    editBtn.onclick = () => {
+        let editData = editBtn.value;
+        console.log(editData);
+        if (editData === 'edit'){
+            document.getElementById('visible').style.display = 'block';
+        }
+        
+        
+        // let editData = document.getElementById('editData').value;
+        // console.log(editData)
+        // if (comfirmData === 'editData'){
+        //     document.getElementById('content').innerHTML = ' ';
+        //     let newDiv = document.createElement('div');
+        //     newDiv.setAttribute('id', 'questions');
+        //     newDiv.innerText = "Get Data Information";
+        //     let infoHeading = document.getElementById('question');
+        //     infoHeading.append(newDiv);
+        //     document.getElementById('content').append(newDiv);
 
-    //     let popList = r.filter(c => c.population >= 100000000);
-    //     for (let popRandom of popList){
-    //         popRandom.rand = Math.random();
-    //     }
-    //     popList.sort((a,b) => a.rand - b.rand);
-    //     let distractors = [];
-    //     for(let i = 0;i<5;i++){
-    //         distractors.push(popList[i]);
-    //     }
-    //     // console.log(distractors)
-    //     let largePopulation = 0;  //-------------------------------> to ask the teacher
-    //     for (let p of distractors){
-    //         if (p.population>largePopulation){
-    //             largePopulation = p.population;
-    //         }
-    //     }
-    //     // console.log(largePopulation);
-    //     for (let loopDist of distractors){
-    //         let popDiv = document.createElement('div');
-    //         popDiv.innerText = loopDist.name;
-    //         popDiv.onclick = () => {
-    //             if(loopDist.population === largePopulation){
-    //                 alert("You got the right thing !! 😄"); 
-    //             }else{
-    //                 alert("Sorry, You're wrong!! 😇 ")
-    //             }
-    //         }
-    //         document.getElementById('content').append(popDiv) 
-    //     };
+        //     // getData.style.display = "block";
 
-               
+        //     let textBox = document.createElement("input");
+        //     let newDivtwo = document.createElement('div');
+        //     let textNote = document.createTextNode('ID');
+        //     textBox.setAttribute('type', 'text');
+        //     textBox.setAttribute('value', 'default');
+        //     newDivtwo.append(textNote);
+        //     newDivtwo.append(textBox);
+        //     document.getElementById('content').append(newDivtwo);
 
-    // }
-// --------------- end population -------------------
+
+            
+        //     // let textBox = document.createElement("input");
+        //     // textBox.setAttribute('type', 'text');
+        //     // textBox.setAttribute('value', 'default');
+        //     // new XMLSerializer().serializeToString(textBox);
+        //     // document.getElementById('content').append(textBox)
+        // }else{
+        //     document.getElementById('getdata').style.display = 'none';
+        // }
+    }                   
+//  document.getElementById('content').innerHTML = ' ';
+//             let newDiv = document.createElement('div');
+//             newDiv.setAttribute('id', 'questions');
+//             newDiv.innerText = "Which country has biggest Area?"
+//             let questPlace = document.getElementById('question');
+//             questPlace.append(newDiv);
+//             document.getElementById('content').append(newDiv)
+
+// --------------- end of edit data -------------------
    })
    
+//    ------------ testing ---------------
+

@@ -15,6 +15,10 @@ html{
     max-width: 1340px;
     margin: 0 auto;
 }
+.container-fluid{
+  margin: 0px;
+  padding:0%
+}
 
 /* ------------heading------------- */
 header{
@@ -118,8 +122,13 @@ h1{
 
 /* -------------------selection 1 ---------------- */
 .section-one {
-  padding: 100px 0;
+  padding: 60px 0;
+  margin: 0px;
   background-color: #dddada;
+
+}
+.section-two{
+  padding: 25%
 }
 #countryList{
   display: inline-block;
@@ -141,9 +150,10 @@ h1{
   height: 70vh;
   
 }
-.selector-one, .selector-two,.selector-three {
+.selector-one, .selector-two,.selector-three,.selector-fours {
   display: inline-block;
-  padding-bottom: 1%;
+  padding-bottom: 3%;
+  /* background-color: olive; */
 }
 .selector-one {
   float: left;
@@ -154,7 +164,11 @@ h1{
   float: left;
 }
 .selector-three{
-padding-left: 10% ;
+  padding-left: 10%;
+  float: left;
+}
+.selector-fours{
+  padding-left: 10%;
 }
 #country,#continent,#quizgame{
   border: 2px solid rgba(54, 168, 172, 0.548);
@@ -166,7 +180,7 @@ padding-left: 10% ;
 #playbtn{
   background-color: skyblue;
 }
-#question{
+#questions{
   font-size: 200%;
   font-weight: 400;
   padding-left: 10%;
@@ -228,4 +242,6 @@ padding-left: 10% ;
 
 
 /* ----------------button----------------- */
+
+
 
