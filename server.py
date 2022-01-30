@@ -42,11 +42,11 @@ def post(i):
     ret['name'] =payload['name']
     ret['continent'] = payload['continent']
     ret['capital'] = payload['capital']
-    # ret['area'] = payload['area']
-    # ret['population'] = payload['population']
-    # ret['gdp'] = payload['gdp']
-    # ret['flag'] = payload['flag']
-    # ret['tld'] = payload['tld']
+    ret['area'] = payload['area']
+    ret['population'] = payload['population']
+    ret['gdp'] = payload['gdp']
+    ret['flag'] = payload['flag']
+    ret['tld'] = payload['tld']
     json.dump(w, open("static/worldl.json","w"))
     return {}
 
@@ -61,16 +61,16 @@ def put():
     ret['name'] =payload['name']
     ret['continent'] = payload['continent']
     ret['capital'] = payload['capital']
-    # ret['area'] = payload['area']
-    # ret['population'] = payload['population']
-    # ret['gdp'] = payload['gdp']
-    # ret['flag'] = payload['flag']
-    # ret['tld'] = payload['tld']
+    ret['area'] = payload['area']
+    ret['population'] = payload['population']
+    ret['gdp'] = payload['gdp']
+    ret['flag'] = payload['flag']
+    ret['tld'] = payload['tld']
     w.append(payload)
     json.dump(w, open("static/worldl.json","w"))
     return {}
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8500)
     

@@ -6,7 +6,31 @@ function getElementIndex(sortedWithPOP,countryName){
     }
 }
 
+let formattertwo = new Intl.NumberFormat('en-US', {
+    style: 'decimal',
+    useGrouping: true
+    });
+    
+function convertToInternationalCurrencySystem (labelValue) {
 
+    // Nine Zeroes for Billions
+    return Math.abs(Number(labelValue)) >= 1.0e+9
+    
+    ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + " Billions"
+    // Six Zeroes for Millions 
+    : Math.abs(Number(labelValue)) >= 1.0e+6
+    
+    ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + " Millions"
+    // Three Zeroes for Thousands
+    : Math.abs(Number(labelValue)) >= 1.0e+3
+    
+    ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + " Thousands"
+    
+    : Math.abs(Number(labelValue));
+    
+}
+    
+    
 
 fetch('static/worldl.json')
    .then(r=>r.json())
@@ -23,8 +47,12 @@ fetch('static/worldl.json')
             d.innerText = c.name;
             d.classList.add('countryIndex');
             d.onclick = ()=>{
-            let rank = getElementIndex(sortedWithPOP,c.name)
             
+            
+            let rank = getElementIndex(sortedWithPOP,c.name)
+            let formatgdp = convertToInternationalCurrencySystem (c.gdp)
+            let formatpop = convertToInternationalCurrencySystem (c.population)
+            let formatarea = formattertwo.format(c.area);
                 
                document.getElementById('content').innerHTML = `
                <div class="tbone">
@@ -34,9 +62,9 @@ fetch('static/worldl.json')
                <tr><th>Id: </th><td>${c.id}</td></tr>
                <tr><th>Capital: </th><td>${c.capital}</td></tr>
                <tr><th>Continent: </th><td>${c.continent}</td></tr>
-               <tr><th>Area: </th><td>${c.area}</td></tr>
-               <tr><th>GDP: </th><td>${c.gdp}</td></tr>
-               <tr><th>Population: </th><td>${c.population}</td></tr>
+               <tr><th>Area: </th><td>${formatarea}</td></tr>
+               <tr><th>GDP: </th><td>${formatgdp}</td></tr>
+               <tr><th>Population: </th><td>${formatpop}</td></tr>
                </table>
                </div>
                <div class='popRank'>
@@ -49,19 +77,14 @@ fetch('static/worldl.json')
 
                <div>
                `;
+
            }
            document.getElementById('countryList').append(d);
-        //    let doc = document.createElement('div');
-        //    doc.setAttribute('id', 'rank');
-        //    doc.innerText = `Ranking ${rank}`
-        //    document.getElementById('content').append(doc);
-
-{/* <span class="badge bg-secondary"><h2 class="rank">Rank ${rank}</h2><br><h3>Population</h3> </span> */}
 
         }
 
         document.querySelector('select').onchange=()=>{
-        console.log(document.querySelector("select").value)
+        // console.log(document.querySelector("select").value)
         let letter = document.querySelector('select').value
         for(let n of document.querySelectorAll('#countryList div')){
         if (n.innerText.startsWith(letter)){
@@ -94,7 +117,7 @@ fetch('static/worldl.json')
         } 
     //    }
         const uniqueValuesSet = new Set(continent);
-        console.log(uniqueValuesSet)
+        // console.log(uniqueValuesSet)
         for(let uniCon of uniqueValuesSet){
             let opt = document.createElement('option')
             opt.innerText = uniCon
@@ -105,7 +128,7 @@ fetch('static/worldl.json')
 
     
         document.getElementById('continent').onchange=()=>{
-            console.log(document.getElementById('continent').value);
+            // console.log(document.getElementById('continent').value);
             let conTin = document.getElementById('continent').value;
             document.getElementById('countryList').innerHTML= ' ';
              
@@ -117,29 +140,33 @@ fetch('static/worldl.json')
                 d.classList.add('countryIndex');
                 d.onclick = ()=>{
                     let rank = getElementIndex(sortedWithPOP,c.name)
-                    document.getElementById('content').innerHTML = `
-                    <div class="tbone">
-                    <table class="cty-list">
-                    <tr><td colspan=2 class="flagImage"><img src=${c.flag} alt="Flag image"></td></tr>
-                    <tr><th> Name:</th><td>${c.name}</td></tr>
-                    <tr><th>Id: </th><td>${c.id}</td></tr>
-                    <tr><th>Capital: </th><td>${c.capital}</td></tr>
-                    <tr><th>Continent: </th><td>${c.continent}</td></tr>
-                    <tr><th>Area: </th><td>${c.area}</td></tr>
-                    <tr><th>GDP: </th><td>${c.gdp}</td></tr>
-                    <tr><th>Population: </th><td>${c.population}</td></tr>
-                    </table>
-                    </div>
-                    <div class='popRank'>
-                    <div class="card border-dark mb-3" style="max-width: 10rem;">
-                    <div class="card-header">Population</div>
-                    <div class="card-body text-dark">
-                    <h5 class="card-title">Rank ${rank}</h5>
-                    </div>
-                    </div>
-
-                    <div>
-                    `;
+                    let formatgdp = convertToInternationalCurrencySystem (c.gdp)
+                    let formatpop = convertToInternationalCurrencySystem (c.population)
+                    let formatarea = formattertwo.format(c.area);
+                        
+                       document.getElementById('content').innerHTML = `
+                       <div class="tbone">
+                       <table class="cty-list">
+                       <tr><td colspan=2 class="flagImage"><img src=${c.flag} alt="Flag image"></td></tr>
+                       <tr><th> Name:</th><td>${c.name}</td></tr>
+                       <tr><th>Id: </th><td>${c.id}</td></tr>
+                       <tr><th>Capital: </th><td>${c.capital}</td></tr>
+                       <tr><th>Continent: </th><td>${c.continent}</td></tr>
+                       <tr><th>Area: </th><td>${formatarea}</td></tr>
+                       <tr><th>GDP: </th><td>${formatgdp}</td></tr>
+                       <tr><th>Population: </th><td>${formatpop}</td></tr>
+                       </table>
+                       </div>
+                       <div class='popRank'>
+                        <div class="card border-dark mb-3" style="max-width: 10rem;">
+                        <div class="card-header">Population</div>
+                        <div class="card-body text-dark">
+                        <h5 class="card-title">Rank ${rank}</h5>
+                        </div>
+                        </div>
+        
+                       <div>
+                       `;
                 }
             
                 document.getElementById('countryList').append(d);
@@ -147,33 +174,6 @@ fetch('static/worldl.json')
     }
 }
 
-// // --------------------- for alphabet ---------------------
-
-//        document.querySelector('select').onchange=()=>{
-//             console.log(document.querySelector("select").value)
-//            let letter = document.querySelector('select').value
-//            for(let n of document.querySelectorAll('#countryList div')){
-//             if (n.innerText.startsWith(letter)){
-//                 n.classList.remove('hide');
-//             }else if(letter === '#'){
-//                 n.classList.remove('hide')
-//             }
-//             else{
-//                 n.classList.add('hide');
-//             }
-//         } 
-//        }
-//     //    for alphabet order
-
-//        for (alpha='A'.charCodeAt();alpha<= 'Z'.charCodeAt();alpha++){
-//         let a = String.fromCharCode(alpha)
-//         let o = document.createElement('option')
-//         o.innerText = a
-//         o.value = a
-//         let s = document.getElementById('country')
-//         // console.log(s)
-//         s.append(o)
-//     }
 
 // --------------------------------------------Quiz Game selection --------------------------------------------
 
@@ -201,7 +201,7 @@ fetch('static/worldl.json')
             distractors.push(popList[i]);
         }
         // console.log(distractors)
-        let largePopulation = 0;  //-------------------------------> to ask the teacher
+        let largePopulation = 0;  
         for (let p of distractors){
             if (p.population>largePopulation){
                 largePopulation = p.population;
@@ -244,7 +244,7 @@ fetch('static/worldl.json')
                 distractors.push(gdpList[i]);
             }
         // console.log(distractors)
-            let largeGdp = 0;  //-------------------------------> to ask the teacher
+            let largeGdp = 0;  
             for (let p of distractors){
                 if (p.gdp>largeGdp){
                     largeGdp = p.gdp;
@@ -265,9 +265,7 @@ fetch('static/worldl.json')
             document.getElementById('content').append(gdpDiv) 
         };
     }
-        // let button = document.createElement('div');
-        // button.setAttribute('id', 'nextButton');
-        // button.innerHTML=`<button type="button" class="btn" id =bthree>Next</button>`
+
         let bThree = document.getElementById('bthree');
         bThree.onclick = () => {
     // else if (btnData === 'area'){
@@ -291,7 +289,7 @@ fetch('static/worldl.json')
                 distractors.push(areaList[i]);
             }
     // console.log(distractors)
-            let largeArea = 0;  //-------------------------------> to ask the teacher
+            let largeArea = 0;  
             for (let p of distractors){
                 if (p.area>largeArea){
                     largeArea = p.area;
@@ -326,24 +324,23 @@ fetch('static/worldl.json')
             let distractors = [];
             for (i = 0;i<3;i++){
                 let randomFlag = Math.floor(Math.random() * 195);
-                console.log(randomFlag)
                 distractors.push(r[randomFlag].flag);
             }
             distractors.push(r[flagName].flag);
 
             let uniflag=new Set(distractors);
-            console.log(uniflag)
+            // console.log(uniflag)
             const arr = [...uniflag];
         // const shuffleArray
             let shuffled = arr
             .map((value) => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
             .map(({ value }) => value)
-            console.log(shuffled)
+            // console.log(shuffled)
 
             for (let d of shuffled){
                 let imgFlag = document.createElement('img')
-                // newDiv.setAttribute('id', 'question');
+                imgFlag.setAttribute('id', 'flagimg');
                 imgFlag.src = d;
                 imgFlag.style.width = '100px';
                 imgFlag.onclick = () => {
@@ -358,80 +355,26 @@ fetch('static/worldl.json')
          
 
         }
+// ------------------------------- End of Quiz Game selection ----------------------------------------------
+
+
+
     
-    // ------------------- reload window--------------------
+// ------------------- reload window--------------------
 
     let reLoad = document.getElementById('reload');
         reLoad.onclick = () => {
             window.location.reload();
         }
-   
-        
-// ------------------------------- End of Quiz Game selection ----------------------------------------------
-        
-// --------------- start of edit data -----------------
-// document.getElementById('visible').style.display = 'none';
-// let editBtn = document.getElementById('editData');
-//     editBtn.onclick = () => {
-//         let editData = editBtn.value;
-//         console.log(editData);
-//         if (editData === 'edit'){
-//             document.getElementById('visible').style.display = 'block';
-//         }
-        
-        
-        // let editData = document.getElementById('editData').value;
-        // console.log(editData)
-        // if (comfirmData === 'editData'){
-        //     document.getElementById('content').innerHTML = ' ';
-        //     let newDiv = document.createElement('div');
-        //     newDiv.setAttribute('id', 'questions');
-        //     newDiv.innerText = "Get Data Information";
-        //     let infoHeading = document.getElementById('question');
-        //     infoHeading.append(newDiv);
-        //     document.getElementById('content').append(newDiv);
 
-        //     // getData.style.display = "block";
-
-        //     let textBox = document.createElement("input");
-        //     let newDivtwo = document.createElement('div');
-        //     let textNote = document.createTextNode('ID');
-        //     textBox.setAttribute('type', 'text');
-        //     textBox.setAttribute('value', 'default');
-        //     newDivtwo.append(textNote);
-        //     newDivtwo.append(textBox);
-        //     document.getElementById('content').append(newDivtwo);
-
-
-            
-        //     // let textBox = document.createElement("input");
-        //     // textBox.setAttribute('type', 'text');
-        //     // textBox.setAttribute('value', 'default');
-        //     // new XMLSerializer().serializeToString(textBox);
-        //     // document.getElementById('content').append(textBox)
-        // }else{
-        //     document.getElementById('getdata').style.display = 'none';
-        // }
-    // }                   
-//  document.getElementById('content').innerHTML = ' ';
-//             let newDiv = document.createElement('div');
-//             newDiv.setAttribute('id', 'questions');
-//             newDiv.innerText = "Which country has biggest Area?"
-//             let questPlace = document.getElementById('question');
-//             questPlace.append(newDiv);
-//             document.getElementById('content').append(newDiv)
-
-// --------------- end of edit data -------------------
    })
 
 
 //    ----------------------- data editing ------------------------
    
 document.getElementById('getbutton').onclick = () => {
-    console.log('pabc')
     //Make a GET call
     let id = document.getElementById('getid').value;
-    console.log('372 console')
     fetch(`/api/country/${id}`)
       .then(r=>r.json())
       .then(r=>{
@@ -451,11 +394,11 @@ document.getElementById('postbutton').onclick = ()=>{
         name: document.getElementById('postname').value,
         continent: document.getElementById('postcontinent').value,
         capital: document.getElementById('postcapital').value,
-        // area: document.getElementById('postarea').value,
-        // population: document.getElementById('postpopulation').value,
-        // gdp: document.getElementById('postgdp').value,
-        // flag: document.getElementById('postflag').value,
-        // tld: document.getElementById('posttld').value,
+        area: document.getElementById('postarea').value,
+        population: document.getElementById('postpopulation').value,
+        gdp: document.getElementById('postgdp').value,
+        flag: document.getElementById('postflag').value,
+        tld: document.getElementById('posttld').value,
     }
     fetch(`/api/country/${payload.id}`, {
         method:'post',
@@ -471,11 +414,11 @@ document.getElementById('putbutton').onclick = ()=>{
         name: document.getElementById('putname').value,
         continent: document.getElementById('putcontinent').value,
         capital: document.getElementById('putcapital').value,
-        // area: document.getElementById('putarea').value,
-        // population: document.getElementById('putpopulation').value,
-        // gdp: document.getElementById('putgdp').value,
-        // flag: document.getElementById('putflag').value,
-        // tld: document.getElementById('puttld').value,
+        area: document.getElementById('putarea').value,
+        population: document.getElementById('putpopulation').value,
+        gdp: document.getElementById('putgdp').value,
+        flag: document.getElementById('putflag').value,
+        tld: document.getElementById('puttld').value,
     }
     fetch(`/api/country/`, {
         method:'put',

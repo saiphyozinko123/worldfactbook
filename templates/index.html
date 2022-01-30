@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;1,300&family=Padauk:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src=../static/index.js></script>
+    <script src=../static/index.js defer></script>
     <link rel="stylesheet" href="../static/index.css">
 
 </head>
@@ -41,22 +41,6 @@
                 <select id="continent" class="select-two">
                 </select>
             </div>
-            <!------------------- for quiz section ---------------------->
-            <div class="col-3 alpha">
-                <!-- <label for="quiz" class="seclabel">Play with</label>
-                <select id="quizgame" class="select-three">
-                    <option value="population">Population</option>
-                    <option value="gdp">GDP</option>
-                    <option value="area">Area</option>
-                    <option value="flag">Flag</option>
-                </select>
-                <button id="playbtn">Play</button> -->
-            </div>
-            <!-------------------- for edit section -------------->
-
-            <div class="col-3 alpha">
-                <button id="editData" value="edit">EditData</button>
-            </div>
         </div>
         <!-- </div> -->
             <div class="row">
@@ -73,9 +57,6 @@
 
         <!--------------- pop up model ------------>
         
-        <!-- Button trigger modal -->
-          
-          <!-- Modal -->
           <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -85,50 +66,112 @@
                 </div>
                 <div class="modal-body">
 
-                    <!-- <div>
+                    <div class="editinfo">
                         <h2>GET</h2>
-                        <input id=getid value=42>
-                        <button id=getbutton>GET</button>
-                        <textarea id=getoutput></textarea>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">ID: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=getid value=42>
+                            <button class="btn btn-primary" type="submit" id=getbutton >GET</button>
+                        </div>
+
+                        <textarea class="form-control"  rows="3" id=getoutput></textarea>
+
                     </div> 
-                    <div>
+                    <div class="editinfo">
                         <h2>DELETE</h2>
-                        <input id=deleteid value=42>
-                        <button id=deletebutton>DELETE</button>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">ID: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=deleteid value=42>
+                            <button class="btn btn-primary" type="submit" id=deletebutton >DEL</button>
+                        </div>
+
                     </div>  
                     
-                    <div>
+                    <div class="editinfo">
                         <h2>POST</h2>
-                        <label>id: <input id=postid value=42></label><br>
-                        <label>name: <input id=postname value='Cuba'></label><br>
-                        <label>continent: <input id=postcontinent value=Caribbean></label><br>
-                        <label>capital: <input id=postcapital value=Havana></label><br>
-                        <label>area: <input id=postarea value=109884></label><br> -->
-                        <!-- <label>population: <input id=postpopulation value=11167325></label><br>
-                        <label>gdp: <input id=postgdp value=71070></label><br>
-                        <label>flag: <input id=postflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg></label><br>
-                        <label>tld: <input id=posttld value=.cu></label><br> -->
-                        <!-- <button id=postbutton>POST</button>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">ID: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postid value=42>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Name: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postname value='Cuba'>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Continent: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postcontinent value=Caribbean>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Capital: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postcapital value=Havana>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Area: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postarea value=109884>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Population: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postpopulation value=11167325>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">GDP: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postgdp value=71070>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Flag: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=postflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">TLD: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=posttld value=.cu>
+                        </div>
+                        <button class="btn btn-primary editbtn" type="submit" id=postbutton >POST</button>
+
                     </div>
 
-                    <div>
+                    <div class="editinfo">
                         <h2>PUT</h2>
-                        <label>id: <input id=putid value=42></label><br>
-                        <label>name: <input id=putname value='Cuba'></label><br>
-                        <label>continent: <input id=putcontinent value=Caribbean></label><br>
-                        <label>capital: <input id=putcapital value=Havana></label><br>
-                        <label>area: <input id=putarea value=109884></label><br> -->
-                        <!-- <label>population: <input id=putpopulation value=11167325></label><br>
-                        <label>gdp: <input id=putgdp value=71070></label><br>
-                        <label>flag: <input id=putflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg></label><br>
-                        <label>tld: <input id=puttld value=.cu></label><br> -->
-                        <!-- <button id=putbutton>PUT</button>
-                    </div> -->
-
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">ID: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putid value=42>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Name: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putname value='Cuba'>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Continent: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putcontinent value=Caribbean>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Capital: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putcapital value=Havana>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Area: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putarea value=109884>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Population: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putpopulation value=11167325>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">GDP: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putgdp value=71070>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Flag: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=putflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">TLD: </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id=puttld value=.cu>
+                        </div>
+                        <button class="btn btn-primary editbtn" type="submit" id=putbutton >PUT</button>
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Understood</button>
                 </div>
 
               </div>
@@ -144,13 +187,11 @@
                   <h5 class="modal-title" id="staticBackdropLabel">Choose The Game </h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body gamebody">
                     <button type="button" class="btn btn-secondary b1" id="bone">Population</button>
                     <button type="button" class="btn btn-secondary b2" id="btwo">GDP</button>
                     <button type="button" class="btn btn-secondary b3" id="bthree">Area</button>
                     <button type="button" class="btn btn-secondary b4" id="bfour">Flag</button>
-                   
-
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -162,35 +203,6 @@
           </div>
 
     </section>
-    <!-- <section class="section-two" id = visible > -->
-        <div>
-            <h2>GET</h2>
-            <input type="text" id='getid' value=42>
-            <button id='getbutton'>GET</button>
-            <textarea id=getoutput></textarea>
-        </div> 
-        <div>
-            <h2>DELETE</h2>
-            <input id=deleteid value=42>
-            <button id=deletebutton>DELETE</button>
-        </div>  
-        
-
-        <!-- <div>
-            <h2>POST</h2>
-            <label>id: <input id=postid value=42></label><br>
-            <label>name: <input id=postname value='Cuba'></label><br>
-            <label>continent: <input id=postcontinent value=Caribbean></label><br>
-            <label>capital: <input id=postcapital value=Havana></label><br>
-            <label>area: <input id=postarea value=109884></label><br>
-            <label>population: <input id=postpopulation value=11167325></label><br>
-            <label>gdp: <input id=postgdp value=71070></label><br>
-            <label>flag: <input id=postflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg></label><br>
-            <label>tld: <input id=posttld value=.cu></label><br>
-            <button id=postbutton>POST</button>
-        </div>     -->
-        
-    <!-- </section> -->
     </div>
 </body>
 </html>
