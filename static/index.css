@@ -11,22 +11,37 @@ html{
     font-size: 20px;
     text-rendering: optimizeLegibility;
 }
-.mid-row{
+/* .mid-row{
     max-width: 1340px;
     margin: 0 auto;
-}
+} */
 .container-fluid{
-  margin: 0px;
-  padding:0%
+  margin: 0 auto;
 }
 
 /* ------------heading------------- */
-header{
+/* header{
     background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(world.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
     background-attachment: fixed;
+
+} */
+body{
+  overflow-x: hidden;
+}
+header{
+  height: 10vh;
+  /* background-color: red; */
+  /* background-color: #f3e2b3 !important; */
+  background-color: azure;
+  /* width: 1450px; */
+  margin: 0 auto;
+  height: 10vh;
+  
+}
+
 
 }
 h1{
@@ -45,6 +60,107 @@ h1{
     left: 20%;
 
 }
+
+.menuLink,.gameLink,.editLink{
+  text-decoration: none;
+}
+.menuLink:link,
+.menuLink:visited{
+  display: inline-block;
+  color: #8b4513;
+  transition: color 0.5s;
+  /* color:seagreen;
+  transition: color 0.5s; */
+  
+  
+}
+.menuLink:hover,
+.menuLink:active{
+  display: inline-block;
+  /* color: #135f8b; */
+      color:#7b2886;
+  /* transition: color 0.5s; */
+  
+}
+.ulNavigation{
+  list-style: none;
+  
+}
+.ulNavigation li{
+  display: inline-block;
+  
+}
+.firstList{
+  padding-left: 4%;
+  padding-top: 0.9%;
+  display: inline-block;
+}
+.secondList{
+  float: right;
+  padding-right: 4%;
+  padding-top: 1.5%;
+  display: inline-block;
+}
+.thirdList{
+  float: right;
+  padding-right: 5%;
+  padding-top: 1.5%;
+  display: inline-block;
+}
+.menuLink h2{
+  font-family: 'Permanent Marker', sans-serif;
+  font-weight: 1000;
+  text-shadow:#41a083;
+  word-spacing: 0.1%;
+  font-size: 200%;
+  letter-spacing: 1px;
+}
+.editLink:link,
+.editLink:visited {
+  color: #8b4513;
+  text-transform: uppercase;
+  font-size: 90%;
+  border-bottom: 2px solid #8b4513 transparent none;
+  transition: border-bottom 0.2s;
+  font-weight: 500;
+
+}
+.editLink:hover,
+.editLink:active{
+  border-bottom: 2px solid #8b4513;
+  color: red;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.gameLink:link,
+.gameLink:visited {
+  color: #8b4513;
+  text-transform: uppercase;
+  font-size: 90%;
+  border-bottom: 2px solid #8b4513 transparent none;
+  transition: border 0.5s color 0.5s;
+  font-weight: 500;
+
+}
+.gameLink:hover,
+.gameLink:active{
+  border-bottom: 2px solid #8b4513;
+  color: rgb(26, 128, 106);
+  transition: color 0.5s, border 0.5s;
+}
+.section-one{
+  background-color: #dbd2b7 !important;
+  height: 90vh;
+  width: auto;
+  /* background-image: linear-gradient(rgba(150, 73, 73, 0.2),rgba(0,0,0,0.2)), url(wall5.jpg); */
+  background-size: cover;
+  background-position: center;
+  /* opacity: 90%; */
+  /* background-attachment: fixed; */
+
+  
+}
+
 /* --------navi bar ---------- */
 .main-navi {
     float: right;
@@ -121,23 +237,25 @@ h1{
 } */
 
 /* -------------------selection 1 ---------------- */
-.section-one {
+/* .section-one {
   padding: 60px 0;
   margin: 0px;
   background-color: #dddada;
 
-}
+} */
 .section-two{
   padding: 25%
 }
 #countryList{
   display: inline-block;
-  height:70vh;
+  height:75vh;
   overflow-y: auto;
-  border: 3px solid black;
+  border: 2px solid black;
   width: 18%;
-  margin-left: 0.5%;
+  margin-left: 2%;
+  scrollbar-color: auto;
 }
+
 #countryList div.hide{
   display:none;
 }
@@ -146,13 +264,14 @@ h1{
   vertical-align: top;
   padding-left:100px;
   border: 2px solid black;
-  width: 80%;
-  height: 70vh;
+  width: 77%;
+  height: 75vh;
   
 }
 .selector-one, .selector-two,.selector-three,.selector-fours {
   display: inline-block;
   padding-bottom: 3%;
+  padding-top: 2%;
   /* background-color: olive; */
 }
 .selector-one {
@@ -171,12 +290,41 @@ h1{
   padding-left: 10%;
 }
 #country,#continent,#quizgame{
-  border: 2px solid rgba(54, 168, 172, 0.548);
+  border: 2px solid #8b4513;
+  font-size: 90%;
 }
 .seclabel{
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 110%;
   padding-right: 4px;
+  text-align: center;
+  display: inline-block;
+  
+  
 }
+.select-one{
+  width: 20%;
+  border-radius: 20%;
+  height: 30px;
+  text-align: center;
+  
+  
+}
+.alpha{
+  padding-left: 5%;
+  /* overflow: hidden; */
+  
+}
+.filterData{
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /* overflow: hidden; */
+  
+}
+/* .table{
+  overflow: hidden;
+  
+} */
 #playbtn{
   background-color: skyblue;
 }
@@ -204,10 +352,14 @@ h1{
   position: relative;
   padding-top: 7%;
   padding-left: 25%;
-
+}
+.tbone th{
+  text-align: center;
+  /* padding-left: 3%; */
 }
 .flagImage img{
   max-width: 300px;
+  max-height: 300px;
   border: 1px solid;
   /* width: 100%; */
   opacity: 85%;
@@ -242,6 +394,9 @@ h1{
 
 
 /* ----------------button----------------- */
+
+
+
 
 
 
