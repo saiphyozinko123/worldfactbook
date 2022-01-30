@@ -1,14 +1,31 @@
+function getElementIndex(sortedWithPOP,countryName){
+    for(let i =0;i<sortedWithPOP.length;i++){
+        if(sortedWithPOP[i].name === countryName){
+            return i+1;
+        }
+    }
+}
+
+
+
 fetch('static/worldl.json')
    .then(r=>r.json())
    .then(r=>{
         let continent= []
 // --------------------- for alphabet ---------------------
+        let sortedWithPOP = r.sort((a,b) => b.population - a.population)
 
+
+       
        for(let c of r){
-           let d = document.createElement('div');
-           d.innerText = c.name;
-           d.classList.add('countryIndex');
-           d.onclick = ()=>{
+           
+            let d = document.createElement('div');
+            d.innerText = c.name;
+            d.classList.add('countryIndex');
+            d.onclick = ()=>{
+            let rank = getElementIndex(sortedWithPOP,c.name)
+            
+                
                document.getElementById('content').innerHTML = `
                <div class="tbone">
                <table class="cty-list">
@@ -22,9 +39,24 @@ fetch('static/worldl.json')
                <tr><th>Population: </th><td>${c.population}</td></tr>
                </table>
                </div>
+               <div class='popRank'>
+                <div class="card border-dark mb-3" style="max-width: 10rem;">
+                <div class="card-header">Population</div>
+                <div class="card-body text-dark">
+                <h5 class="card-title">Rank ${rank}</h5>
+                </div>
+                </div>
+
+               <div>
                `;
            }
            document.getElementById('countryList').append(d);
+        //    let doc = document.createElement('div');
+        //    doc.setAttribute('id', 'rank');
+        //    doc.innerText = `Ranking ${rank}`
+        //    document.getElementById('content').append(doc);
+
+{/* <span class="badge bg-secondary"><h2 class="rank">Rank ${rank}</h2><br><h3>Population</h3> </span> */}
 
         }
 
@@ -84,6 +116,7 @@ fetch('static/worldl.json')
                 d.innerText = c.name;
                 d.classList.add('countryIndex');
                 d.onclick = ()=>{
+                    let rank = getElementIndex(sortedWithPOP,c.name)
                     document.getElementById('content').innerHTML = `
                     <div class="tbone">
                     <table class="cty-list">
@@ -97,6 +130,15 @@ fetch('static/worldl.json')
                     <tr><th>Population: </th><td>${c.population}</td></tr>
                     </table>
                     </div>
+                    <div class='popRank'>
+                    <div class="card border-dark mb-3" style="max-width: 10rem;">
+                    <div class="card-header">Population</div>
+                    <div class="card-body text-dark">
+                    <h5 class="card-title">Rank ${rank}</h5>
+                    </div>
+                    </div>
+
+                    <div>
                     `;
                 }
             
@@ -135,11 +177,11 @@ fetch('static/worldl.json')
 
 // --------------------------------------------Quiz Game selection --------------------------------------------
 
-    let playBtn = document.getElementById('playbtn');
-    playBtn.onclick = () => {
-        let btnData = document.getElementById('quizgame').value;
-        console.log(btnData)
-        if (btnData === 'population'){
+    let bOne = document.getElementById('bone');
+    bOne.onclick = () => {
+        // let btnData = document.getElementById('quizgame').value;
+        // console.log(btnData)
+        // if (btnData === 'population'){
 
         document.getElementById('content').innerHTML = ' ';
         let newDiv = document.createElement('div');
@@ -179,8 +221,11 @@ fetch('static/worldl.json')
             }
             document.getElementById('content').append(popDiv) 
         };
+    }
+    let bTwo = document.getElementById('btwo');
+    bTwo.onclick = () => {
 
-        }else if (btnData === 'gdp'){
+        // else if (btnData === 'gdp'){
             document.getElementById('content').innerHTML = ' ';
             let newDiv = document.createElement('div');
             newDiv.setAttribute('id', 'questions');
@@ -219,13 +264,21 @@ fetch('static/worldl.json')
                 }
             document.getElementById('content').append(gdpDiv) 
         };
-        }else if (btnData === 'area'){
+    }
+        // let button = document.createElement('div');
+        // button.setAttribute('id', 'nextButton');
+        // button.innerHTML=`<button type="button" class="btn" id =bthree>Next</button>`
+        let bThree = document.getElementById('bthree');
+        bThree.onclick = () => {
+    // else if (btnData === 'area'){
             document.getElementById('content').innerHTML = ' ';
             let newDiv = document.createElement('div');
             newDiv.setAttribute('id', 'questions');
             newDiv.innerText = "Which country has biggest Area?"
             let questPlace = document.getElementById('question');
             questPlace.append(newDiv);
+            
+            // document.getElementById('content').append(button)
             document.getElementById('content').append(newDiv);
 
             let areaList = r.filter(c => c.area >= 2000000);
@@ -258,7 +311,10 @@ fetch('static/worldl.json')
                 }
             document.getElementById('content').append(areaDiv) 
             };
-        }else if (btnData === 'flag'){
+        }
+        let bFour = document.getElementById('bfour');
+        bFour.onclick = () => {
+    // else if (btnData === 'flag'){
             document.getElementById('content').innerHTML = ' ';
             let flagName = Math.floor(r.length*Math.random());
             let newDiv = document.createElement('div');
@@ -301,21 +357,27 @@ fetch('static/worldl.json')
             };
          
 
-    }
-    
-   
         }
+    
+    // ------------------- reload window--------------------
+
+    let reLoad = document.getElementById('reload');
+        reLoad.onclick = () => {
+            window.location.reload();
+        }
+   
+        
 // ------------------------------- End of Quiz Game selection ----------------------------------------------
         
 // --------------- start of edit data -----------------
-document.getElementById('visible').style.display = 'none';
-let editBtn = document.getElementById('editData');
-    editBtn.onclick = () => {
-        let editData = editBtn.value;
-        console.log(editData);
-        if (editData === 'edit'){
-            document.getElementById('visible').style.display = 'block';
-        }
+// document.getElementById('visible').style.display = 'none';
+// let editBtn = document.getElementById('editData');
+//     editBtn.onclick = () => {
+//         let editData = editBtn.value;
+//         console.log(editData);
+//         if (editData === 'edit'){
+//             document.getElementById('visible').style.display = 'block';
+//         }
         
         
         // let editData = document.getElementById('editData').value;
@@ -350,7 +412,7 @@ let editBtn = document.getElementById('editData');
         // }else{
         //     document.getElementById('getdata').style.display = 'none';
         // }
-    }                   
+    // }                   
 //  document.getElementById('content').innerHTML = ' ';
 //             let newDiv = document.createElement('div');
 //             newDiv.setAttribute('id', 'questions');
@@ -361,6 +423,66 @@ let editBtn = document.getElementById('editData');
 
 // --------------- end of edit data -------------------
    })
+
+
+//    ----------------------- data editing ------------------------
    
-//    ------------ testing ---------------
+document.getElementById('getbutton').onclick = () => {
+    console.log('pabc')
+    //Make a GET call
+    let id = document.getElementById('getid').value;
+    console.log('372 console')
+    fetch(`/api/country/${id}`)
+      .then(r=>r.json())
+      .then(r=>{
+          document.getElementById('getoutput').value=JSON.stringify(r);
+      })
+}
+
+document.getElementById('deletebutton').onclick = ()=>{
+    let id = document.getElementById('deleteid').value;
+    fetch(`/api/country/${id}`, {method:'DELETE'})
+}
+
+
+document.getElementById('postbutton').onclick = ()=>{
+    let payload = {
+        id: document.getElementById('postid').value,
+        name: document.getElementById('postname').value,
+        continent: document.getElementById('postcontinent').value,
+        capital: document.getElementById('postcapital').value,
+        // area: document.getElementById('postarea').value,
+        // population: document.getElementById('postpopulation').value,
+        // gdp: document.getElementById('postgdp').value,
+        // flag: document.getElementById('postflag').value,
+        // tld: document.getElementById('posttld').value,
+    }
+    fetch(`/api/country/${payload.id}`, {
+        method:'post',
+        body: JSON.stringify(payload),
+        headers:{'content-type':'application/json'}
+    })
+}
+
+
+document.getElementById('putbutton').onclick = ()=>{
+    let payload = {
+        id: document.getElementById('putid').value,
+        name: document.getElementById('putname').value,
+        continent: document.getElementById('putcontinent').value,
+        capital: document.getElementById('putcapital').value,
+        // area: document.getElementById('putarea').value,
+        // population: document.getElementById('putpopulation').value,
+        // gdp: document.getElementById('putgdp').value,
+        // flag: document.getElementById('putflag').value,
+        // tld: document.getElementById('puttld').value,
+    }
+    fetch(`/api/country/`, {
+        method:'put',
+        body: JSON.stringify(payload),
+        headers:{'content-type':'application/json'}
+    })
+}
+
+
 

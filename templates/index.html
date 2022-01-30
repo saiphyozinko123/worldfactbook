@@ -19,9 +19,9 @@
             <nav>
                 <div class="menubar">
                     <ul class="ulNavigation">
-                        <li class="firstList"><a href="#" class="menuLink"><h2>World fact book</h2></a></li>
-                        <li class="thirdList"><a href="#" class="editLink">Edit</a></li>
-                        <li class="secondList"><a href="#" class="gameLink">Play Game</a></li>
+                        <li class="firstList"><a href="#" class="menuLink" id="reload"><h2>World fact book</h2></a></li>
+                        <li class="thirdList"><a href="#" class="editLink" data-bs-toggle="modal" data-bs-target="#edit">Edit</a></li>
+                        <li class="secondList"><a href="#" class="gameLink" data-bs-toggle="modal" data-bs-target="#game">Play Game</a></li>
                     </ul>
                 </div>
             </nav>
@@ -43,14 +43,14 @@
             </div>
             <!------------------- for quiz section ---------------------->
             <div class="col-3 alpha">
-                <label for="quiz" class="seclabel">Play with</label>
+                <!-- <label for="quiz" class="seclabel">Play with</label>
                 <select id="quizgame" class="select-three">
                     <option value="population">Population</option>
                     <option value="gdp">GDP</option>
                     <option value="area">Area</option>
                     <option value="flag">Flag</option>
                 </select>
-                <button id="playbtn">Play</button>
+                <button id="playbtn">Play</button> -->
             </div>
             <!-------------------- for edit section -------------->
 
@@ -64,16 +64,109 @@
                 <!-- end -->
                 <div class="table">
                     <div id=countryList class="col-2"></div>
-                    <div id =content class="col-10"></div>
+                    <div id =content class="col-10">
+
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!--------------- pop up model ------------>
+        
+        <!-- Button trigger modal -->
+          
+          <!-- Modal -->
+          <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- <div>
+                        <h2>GET</h2>
+                        <input id=getid value=42>
+                        <button id=getbutton>GET</button>
+                        <textarea id=getoutput></textarea>
+                    </div> 
+                    <div>
+                        <h2>DELETE</h2>
+                        <input id=deleteid value=42>
+                        <button id=deletebutton>DELETE</button>
+                    </div>  
+                    
+                    <div>
+                        <h2>POST</h2>
+                        <label>id: <input id=postid value=42></label><br>
+                        <label>name: <input id=postname value='Cuba'></label><br>
+                        <label>continent: <input id=postcontinent value=Caribbean></label><br>
+                        <label>capital: <input id=postcapital value=Havana></label><br>
+                        <label>area: <input id=postarea value=109884></label><br> -->
+                        <!-- <label>population: <input id=postpopulation value=11167325></label><br>
+                        <label>gdp: <input id=postgdp value=71070></label><br>
+                        <label>flag: <input id=postflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg></label><br>
+                        <label>tld: <input id=posttld value=.cu></label><br> -->
+                        <!-- <button id=postbutton>POST</button>
+                    </div>
+
+                    <div>
+                        <h2>PUT</h2>
+                        <label>id: <input id=putid value=42></label><br>
+                        <label>name: <input id=putname value='Cuba'></label><br>
+                        <label>continent: <input id=putcontinent value=Caribbean></label><br>
+                        <label>capital: <input id=putcapital value=Havana></label><br>
+                        <label>area: <input id=putarea value=109884></label><br> -->
+                        <!-- <label>population: <input id=putpopulation value=11167325></label><br>
+                        <label>gdp: <input id=putgdp value=71070></label><br>
+                        <label>flag: <input id=putflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg></label><br>
+                        <label>tld: <input id=puttld value=.cu></label><br> -->
+                        <!-- <button id=putbutton>PUT</button>
+                    </div> -->
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <!-------------------------- for question ----------------------------------->
+          <div class="modal fade" id="game" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Choose The Game </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-secondary b1" id="bone">Population</button>
+                    <button type="button" class="btn btn-secondary b2" id="btwo">GDP</button>
+                    <button type="button" class="btn btn-secondary b3" id="bthree">Area</button>
+                    <button type="button" class="btn btn-secondary b4" id="bfour">Flag</button>
+                   
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
     </section>
-    <section class="section-two" id = visible >
+    <!-- <section class="section-two" id = visible > -->
         <div>
             <h2>GET</h2>
-            <input id=getid value=42>
-            <button id=getbutton>GET</button>
+            <input type="text" id='getid' value=42>
+            <button id='getbutton'>GET</button>
             <textarea id=getoutput></textarea>
         </div> 
         <div>
@@ -83,7 +176,7 @@
         </div>  
         
 
-        <div>
+        <!-- <div>
             <h2>POST</h2>
             <label>id: <input id=postid value=42></label><br>
             <label>name: <input id=postname value='Cuba'></label><br>
@@ -95,9 +188,9 @@
             <label>flag: <input id=postflag value=//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg></label><br>
             <label>tld: <input id=posttld value=.cu></label><br>
             <button id=postbutton>POST</button>
-        </div>    
+        </div>     -->
         
-    </section>
+    <!-- </section> -->
     </div>
 </body>
 </html>

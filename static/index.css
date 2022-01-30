@@ -243,9 +243,9 @@ h1{
   background-color: #dddada;
 
 } */
-.section-two{
+/* .section-two{
   padding: 25%
-}
+} */
 #countryList{
   display: inline-block;
   height:75vh;
@@ -333,6 +333,7 @@ h1{
   font-weight: 400;
   padding-left: 10%;
   padding-top: 5%;
+
   
 }
 #answer{
@@ -352,10 +353,21 @@ h1{
   position: relative;
   padding-top: 7%;
   padding-left: 25%;
+  display: inline-block;
+  float: left;
 }
 .tbone th{
   text-align: center;
   /* padding-left: 3%; */
+}
+.popRank{
+  display: inline-block;
+  float: left;
+  padding-left: 20%;
+  padding-top: 3%;
+}
+.rank{
+  text-align: center;
 }
 .flagImage img{
   max-width: 300px;
@@ -369,6 +381,9 @@ h1{
   margin-bottom: 10px;
 
 }
+/* .modal-dialog{
+  width: 1000px;
+} */
 .flagImage img:hover{
   transform: scale(1.03);
   opacity: 1;
@@ -394,7 +409,41 @@ h1{
 
 
 /* ----------------button----------------- */
-
+/* ----------------pop up game ----------- */
+.modal-body{
+  text-align: center;
+  /* padding:1% */
+}
+/* .modal-body button{
+  padding-left: 5%;
+  
+} */
+.b1{
+  background-color: rgb(122, 176, 238);
+  border: rgb(122, 176, 238);
+}
+.b2{
+  background-color: orange;
+  border: orange;
+}
+.b3{
+  background-color: rgb(169, 106, 228);
+  border: blueviolet;
+}
+.b4{
+  background-color: rgb(219, 86, 112);
+  border: crimson;
+}
+/* #nextButton{
+  display: inline-block;
+  float: right;
+  padding-top: 35%;
+  padding-right: 15%;
+} */
+.next{
+  background-color: rgb(6, 39, 39);
+  color: black;
+}
 
 
 
