@@ -12,8 +12,8 @@ Moreover, users can filter the website with the Continent. Furthermore, user can
 
 ## Copyright
 
-This project is only authorized to the <strong>Sai Phyo Zin Ko, Edinburgh Napier University (UK).</strong>
-![LICENSE](https://img.shields.io/github/license/saiphyozinko/worldfactbook.svg?style=flat-square&color=blue)
+This project is only authorized to the <strong>Sai Phyo Zin Ko, Edinburgh Napier University (UK).</strong> <br>
+![LICENSE](https://img.shields.io/github/license/saiphyozinko123/worldfactbook.svg?style=flat-square&color=blue)
 
 ## Features
 
